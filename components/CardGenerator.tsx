@@ -696,12 +696,16 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({
                       </div>
 
                       {/* Card Footer */}
-                      <div className="flex justify-between items-center border-t border-white/5 pt-1.5 text-[8px] text-slate-400 font-medium z-10">
-                        <span className="tracking-wider">كود رقمي مشفر</span>
-                        <span className="animate-pulse flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                          نظام هوية ذكية
-                        </span>
+                      <div className="flex justify-between items-end border-t border-white/5 pt-1.5 text-[8px] text-slate-400 font-medium z-10">
+                        <div className="flex flex-col items-start leading-tight" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+                          <span className="text-[7px] text-slate-300 font-bold block mb-0.5">تحت رعاية آباء الكنيسة :</span>
+                          <span className="text-[8.5px] text-amber-200 font-bold block tracking-wide">القس أنطونيوس شكري</span>
+                          <span className="text-[8.5px] text-amber-200 font-bold block mt-0.5 tracking-wide">القس بولس نبيل</span>
+                        </div>
+                        <div className="flex flex-col items-center leading-tight" style={{ fontFamily: "'Aref Ruqaa', serif", minWidth: '75px' }}>
+                          <span className="text-[7px] text-slate-300 font-bold block">أمين الخدمة</span>
+                          <span className="text-[9.5px] text-amber-300 font-bold block mt-0.5" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>د/ مجدي نجيب</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -795,9 +799,16 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({
                 </div>
 
                 {/* Footer */}
-                <div className="flex justify-between items-center border-t border-white/5 pt-1 text-[8px] text-slate-400">
-                  <span>كود رقمي مشفر</span>
-                  <span>نظام هوية ذكية</span>
+                <div className="flex justify-between items-end border-t border-white/5 pt-1 text-[8px] text-slate-400 font-medium">
+                  <div className="flex flex-col items-start leading-tight" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+                    <span className="text-[7px] text-slate-300 font-bold block mb-0.5">تحت رعاية آباء الكنيسة :</span>
+                    <span className="text-[8.5px] text-amber-200 font-bold block tracking-wide">القس أنطونيوس شكري</span>
+                    <span className="text-[8.5px] text-amber-200 font-bold block mt-0.5 tracking-wide">القس بولس نبيل</span>
+                  </div>
+                  <div className="flex flex-col items-center leading-tight" style={{ fontFamily: "'Aref Ruqaa', serif", minWidth: '75px' }}>
+                    <span className="text-[7px] text-slate-300 font-bold block">أمين الخدمة</span>
+                    <span className="text-[9.5px] text-amber-300 font-bold block mt-0.5">د/ مجدي نجيب</span>
+                  </div>
                 </div>
               </div>
             );
