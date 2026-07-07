@@ -169,6 +169,7 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({
   
   // Single card editing
   const [editingCardId, setEditingCardId] = useState<string | null>(null);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const [downloadingCardId, setDownloadingCardId] = useState<string | null>(null);
   const [isZipping, setIsZipping] = useState(false);
   const [editFormData, setEditFormData] = useState({
@@ -319,9 +320,12 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({
         pixelRatio: 3, // High DPI resolution (3x scale) for professional quality
       });
       
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      await downloadOrShareFile(blob, `بطاقة_هوية_${studentName.replace(/\s+/g, '_')}.png`);
+      const link = document.createElement('a');
+      link.download = `بطاقة_هوية_${studentName.replace(/\s+/g, '_')}.png`;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (error) {
       console.error('Error generating card image:', error);
     } finally {
@@ -523,11 +527,23 @@ export const CardGenerator: React.FC<CardGeneratorProps> = ({
                 return (
                   <div 
                     key={card.id} 
-                    className="relative bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-4 hover:shadow-md transition-all flex flex-col group/card"
+                    className="relative bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-4 hover:shadow-md transition-all flex flex-col group/card cursor-pointer"
                     id={`card-container-${card.id}`}
+                    onClick={() => {
+                      if (!isEditing) {
+                        setActiveCardId(activeCardId === card.id ? null : card.id);
+                      }
+                    }}
                   >
                     {/* Action buttons (hidden in print view) */}
-                    <div className="absolute top-2 left-2 flex gap-1 print:hidden opacity-100 sm:opacity-0 sm:group-hover/card:opacity-100 transition-opacity z-10">
+                    <div 
+                      className={`absolute top-2 left-2 flex gap-1 print:hidden transition-all duration-200 z-20 ${
+                        activeCardId === card.id || isEditing
+                          ? 'opacity-100 scale-100 pointer-events-auto' 
+                          : 'opacity-0 scale-95 pointer-events-none sm:opacity-0 sm:group-hover/card:opacity-100 sm:group-hover/card:pointer-events-auto sm:group-hover/card:scale-100'
+                      }`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       {isEditing ? (
                         <>
                           <button 

@@ -9,11 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/android": "^8.4.1",
-    "@capacitor/cli": "^8.4.1",
-    "@capacitor/core": "^8.4.1",
-    "@capacitor/filesystem": "^8.1.2",
-    "@capacitor/splash-screen": "^8.0.1",
     "@emailjs/browser": "^4.4.1",
     "firebase": "^12.6.0",
     "html-to-image": "^1.11.13",
@@ -29,7 +24,6 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@capacitor/assets": "^3.0.5",
     "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
