@@ -1,6 +1,6 @@
 
-@import "./src/fonts.css";
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap');
+@import "./src/fonts.css";
 @import "tailwindcss";
 
 @theme {
