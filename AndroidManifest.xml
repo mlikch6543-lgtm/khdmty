@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gerges.khdmty">
+
+    <!-- ========================================== -->
+    <!--          Permissions Configuration         -->
+    <!-- ========================================== -->
+
+    <!-- Required for camera access to scan QR/Barcodes of students/servants -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Required for local persistence and saving/exporting reports (Excel & PDF) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- For Android 13+ media access -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!-- Required for syncing database records with Firebase (when connected to the internet) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- Required to check connection state (Online/Offline) and handle offline mode -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Required for vibration/haptic feedback upon successful QR scan -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- ========================================== -->
+    <!--          Hardware Features Declarations    -->
+    <!-- ========================================== -->
+    
+    <!-- Declare camera hardware is used. Mark as optional so devices without autofocussing can still install -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:screenOrientation="unspecified"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection"
+            android:windowSoftInputMode="adjustResize">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Optional: Handle deep linking or app associations if needed -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="khedmaty-sunday-school.web.app" />
+            </intent-filter>
+        </activity>
+
+        <!-- File Provider to share exported Excel or PDF files with other apps securely -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

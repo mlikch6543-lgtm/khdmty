@@ -1,0 +1,6 @@
+{
+  "name": "Khedmaty - Sunday School System",
+  "description": "A comprehensive attendance and management system for Sunday Schools, featuring dashboards for Admins, Sector Secretaries, and Servants.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

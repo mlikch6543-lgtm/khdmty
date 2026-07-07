@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Khdmty</string>
+    <string name="title_activity_main">Khdmty</string>
+    <string name="package_name">com.gerges.khdmty</string>
+    <string name="custom_url_scheme">com.gerges.khdmty</string>
+</resources>
